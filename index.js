@@ -14,6 +14,7 @@ loginBtn.addEventListener('click', () => {
 });
 
 
+//MOBILE SWIPE SECTION 
 // Add touch event listeners
 container.addEventListener('touchstart', handleTouchStart);
 container.addEventListener('touchmove', handleTouchMove);
@@ -43,6 +44,8 @@ function handleTouchEnd() {
  currentX = null;
 }
 
+
+//INSTRUCTION MESSAGE BOX
 const messageBox = document.getElementById('messageBox');
 const countdownElement = document.getElementById('countdown');
 
@@ -59,6 +62,7 @@ function showMessageBox() {
 
     if (countdown === 0) {
       clearInterval(countdownInterval);
+      messageBox.style.opacity = '0';
     }
   }, 1000);
 }
