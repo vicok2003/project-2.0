@@ -66,7 +66,7 @@ function showMessageBox() {
 window.addEventListener('load', () => {
     setTimeout(() => {
       showMessageBox();
-    }, 7000); // Show message box after 7 seconds
+    }, 5000); // Show message box after 5 seconds
   });
 
   
