@@ -42,3 +42,28 @@ function handleTouchEnd() {
  startX = null;
  currentX = null;
 }
+
+const messageBox = document.getElementById('messageBox');
+const countdownElement = document.getElementById('countdown');
+
+let countdownInterval;
+
+function showMessageBox() {
+  messageBox.style.opacity = '1';
+  const countdownDuration = 180; // 3 minutes in seconds
+  let countdown = countdownDuration;
+
+  countdownInterval = setInterval(() => {
+    countdown--;
+    countdownElement.textContent = countdown;
+
+    if (countdown === 0) {
+      clearInterval(countdownInterval);
+      messageBox.style.opacity = '0';
+    }
+  }, 1000);
+}
+
+window.addEventListener('load', () => {
+  setTimeout(showMessageBox, 5000); // Show message box after 5 seconds
+});
