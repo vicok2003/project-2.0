@@ -50,7 +50,7 @@ let countdownInterval;
 
 function showMessageBox() {
   messageBox.style.opacity = '1';
-  const countdownDuration = 180; // 3 minutes in seconds
+  const countdownDuration = 60; // 1 minutes in seconds
   let countdown = countdownDuration;
 
   countdownInterval = setInterval(() => {
@@ -59,11 +59,16 @@ function showMessageBox() {
 
     if (countdown === 0) {
       clearInterval(countdownInterval);
-      messageBox.style.opacity = '0';
     }
   }, 1000);
 }
 
 window.addEventListener('load', () => {
-  setTimeout(showMessageBox, 7000); // Show message box after 5 seconds
-});
+    setTimeout(() => {
+      showMessageBox();
+    }, 7000); // Show message box after 7 seconds
+  });
+
+  
+// Hide the message box initially
+messageBox.style.opacity = '0';
