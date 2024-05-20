@@ -76,3 +76,115 @@ window.addEventListener('load', () => {
   
 // Hide the message box initially
 messageBox.style.opacity = '0';
+
+//form validation
+const signUpButton = document.getElementById('signUpButton');
+const signInButton = document.getElementById('signInButton');
+
+signUpButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    validateSignUpForm();
+});
+
+signInButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    validateSignInForm();
+});
+
+function validateSignUpForm() {
+    const name = document.getElementById('signUpName');
+    const email = document.getElementById('signUpEmail');
+    const password = document.getElementById('signUpPassword');
+
+    const nameError = document.getElementById('nameError');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
+
+    let isValid = true;
+
+    if (name.value.trim() === '') {
+        isValid = false;
+        nameError.textContent = 'Name is required.';
+        nameError.style.display = 'block';
+    } else {
+        nameError.style.display = 'none';
+    }
+
+    if (!validateEmail(email.value)) {
+        isValid = false;
+        emailError.textContent = 'Please enter a valid email address.';
+        emailError.style.display = 'block';
+    } else {
+        emailError.style.display = 'none';
+    }
+
+    if (!validatePassword(password.value)) {
+        isValid = false;
+        passwordError.textContent = 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.';
+        passwordError.style.display = 'block';
+    } else {
+        passwordError.style.display = 'none';
+    }
+
+    if (isValid) {
+        console.log('Sign-Up form is valid');
+        // Submit the form or perform other actions
+    }
+}
+
+function validateSignInForm() {
+    const email = document.getElementById('signInEmail');
+    const password = document.getElementById('signInPassword');
+
+    const emailError = document.getElementById('signInEmailError');
+    const passwordError = document.getElementById('signInPasswordError');
+
+    let isValid = true;
+
+    if (!validateEmail(email.value)) {
+        isValid = false;
+        emailError.textContent = 'Please enter a valid email address.';
+        emailError.style.display = 'block';
+    } else {
+        emailError.style.display = 'none';
+    }
+
+    if (password.value.trim() === '') {
+        isValid = false;
+        passwordError.textContent = 'Password is required.';
+        passwordError.style.display = 'block';
+    } else {
+        passwordError.style.display = 'none';
+    }
+
+    if (isValid) {
+        console.log('Sign-In form is valid');
+        // Submit the form or perform other actions
+    }
+}
+
+function validateEmail(email) {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(String(email).toLowerCase());
+}
+
+function validatePassword(password) {
+    const re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+    return re.test(password);
+}
+
+// Show/hide password functionality
+function togglePasswordVisibility(passwordFieldId, toggleIconId) {
+  const passwordField = document.getElementById(passwordFieldId);
+  const toggleIcon = document.getElementById(toggleIconId);
+
+  if (passwordField.type === 'password') {
+      passwordField.type = 'text';
+      toggleIcon.classList.remove('bi-eye-slash');
+      toggleIcon.classList.add('bi-eye');
+  } else {
+      passwordField.type = 'password';
+      toggleIcon.classList.remove('bi-eye');
+      toggleIcon.classList.add('bi-eye-slash');
+  }
+}

@@ -34,10 +34,16 @@
                     <a href="#" class="icon"><i class="bi bi-linkedin"></i></a>
                 </div>
                 <span>or use your email for registration</span>
-                <input type="text" placeholder="Name">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <button>Sign-Up</button>
+                <input type="text" id="signUpName" placeholder="Name" required>
+                <span class="error-message" id="nameError"></span>
+                <input type="email" id="signUpEmail" placeholder="Email" required>
+                <span class="error-message" id="emailError"></span>
+                <div class="password-container">
+                    <input type="password" id="signInPassword" placeholder="Password" required>
+                    <i class="bi bi-eye-slash" id="toggleSignInPassword" onclick="togglePasswordVisibility('signInPassword', 'toggleSignInPassword')"></i>
+                </div>
+                <span class="error-message" id="passwordError"></span>
+                <button id="signUpButton">Sign-Up</button>
             </form>
         </div>
 
@@ -52,10 +58,15 @@
                     <a href="#" class="icon"><i class="bi bi-linkedin"></i></a>
                 </div>
                 <span>or use your email and password</span>
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
+                <input type="email" id="signInEmail" placeholder="Email" required>
+                <span class="error-message" id="signInEmailError"></span>
+                <div class="password-container">
+                    <input type="password" id="signInPassword" placeholder="Password" required>
+                    <i class="bi bi-eye-slash" id="toggleSignInPassword" onclick="togglePasswordVisibility('signInPassword', 'toggleSignInPassword')"></i>
+                </div>
+                <span class="error-message" id="signInPasswordError"></span>
                 <a href="#">Forgot Your Password</a>
-                <button>Sign In</button>
+                <button id="signInButton">Sign In</button>
             </form>
         </div>
         <div class="toggle-container">

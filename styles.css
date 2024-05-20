@@ -259,6 +259,34 @@ body {
     transform: translateX(200%);
 }
 
+/* eye function */
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-container .bi-eye-slash, .password-container .bi-eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+
+/* error message for form */
+.error-message {
+  color: red;
+  font-size: 12px;
+  display: none;
+}
+
+.password-container + .error-message {
+  display: block;
+  margin-left: 10px;
+}
+
+
 @media (max-width: 768px) {
     .container {
       width: 90%;
