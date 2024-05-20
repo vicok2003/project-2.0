@@ -77,18 +77,32 @@ window.addEventListener('load', () => {
 // Hide the message box initially
 messageBox.style.opacity = '0';
 
+
+
 //form validation
 const signUpButton = document.getElementById('signUpButton');
 const signInButton = document.getElementById('signInButton');
+const popupMessage = document.getElementById('popupMessage');
 
 signUpButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    validateSignUpForm();
+  e.preventDefault();
+  if (validateSignUpForm()) {
+    showLoading(signUpButton);
+    setTimeout(() => {
+      hideLoading(signUpButton);
+      showPopupMessage();
+    }, 5000);
+  }
 });
 
 signInButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    validateSignInForm();
+  e.preventDefault();
+  if (validateSignInForm()) {
+    showLoading(signInButton);
+    setTimeout(() => {
+      hideLoading(signInButton);
+    }, 5000);
+  }
 });
 
 function validateSignUpForm() {
@@ -126,10 +140,12 @@ function validateSignUpForm() {
         passwordError.style.display = 'none';
     }
 
-    if (isValid) {
-        console.log('Sign-Up form is valid');
+    //if (isValid) {
+      //  console.log('Sign-Up form is valid');
         // Submit the form or perform other actions
-    }
+    //}
+
+    return isValid;
 }
 
 function validateSignInForm() {
@@ -157,10 +173,12 @@ function validateSignInForm() {
         passwordError.style.display = 'none';
     }
 
-    if (isValid) {
-        console.log('Sign-In form is valid');
+    //if (isValid) {
+      //  console.log('Sign-In form is valid');
         // Submit the form or perform other actions
-    }
+    //}
+
+    return isValid;
 }
 
 function validateEmail(email) {
@@ -187,4 +205,28 @@ function togglePasswordVisibility(passwordFieldId, toggleIconId) {
       toggleIcon.classList.remove('bi-eye');
       toggleIcon.classList.add('bi-eye-slash');
   }
+}
+
+// Function to show the popup message
+function showPopupMessage() {
+  console.log('Showing popup message');
+  popupMessage.style.display = 'block';
+
+  // Hide the popup message after a few seconds
+  setTimeout(() => {
+    console.log('Hiding popup message');
+      popupMessage.style.display = 'none';
+  }, 3000);
+}
+
+function showLoading(button) {
+  button.disabled = true;
+  button.querySelector('.button-text').style.display = 'none';
+  button.querySelector('.spinner-border').style.display = 'inline-block';
+}
+
+function hideLoading(button) {
+  button.disabled = false;
+  button.querySelector('.button-text').style.display = 'inline';
+  button.querySelector('.spinner-border').style.display = 'none';
 }
