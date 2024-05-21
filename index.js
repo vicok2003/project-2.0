@@ -101,10 +101,12 @@ signInButton.addEventListener('click', (e) => {
     showLoading(signInButton);
     setTimeout(() => {
       hideLoading(signInButton);
+      window.location.href = 'dashboard.html';
     }, 5000);
   }
 });
 
+//validate sign up form
 function validateSignUpForm() {
     const name = document.getElementById('signUpName');
     const email = document.getElementById('signUpEmail');
@@ -148,6 +150,7 @@ function validateSignUpForm() {
     return isValid;
 }
 
+//validate sign In form
 function validateSignInForm() {
     const email = document.getElementById('signInEmail');
     const password = document.getElementById('signInPassword');
