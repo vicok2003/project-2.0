@@ -153,7 +153,12 @@ input:checked + .slider .moon-icon {
 
 .sidebar {
     width: 250px;
+    min-width: 250px;
     background-color: #512da8;
+    transition: all 0.3s;
+    margin: 10px; /* Add margin around the sidebar */
+    border: 2px solid #343a40; /* Add border to the sidebar */
+    border-radius: 8px; /* Add rounded corners to the sidebar */
 }
 
 .sidebar-header {
@@ -212,15 +217,15 @@ input:checked + .slider .moon-icon {
     .sidebar {
         position: fixed;
         left: -250px;
-        height: 100%;
-        top: 0;
-        bottom: 0;
+        height: calc(100% - 20px); /* Adjust height for margin */
+        top: 10px; /* Adjust top for margin */
+        bottom: 10px; /* Adjust bottom for margin */
         z-index: 1000;
         transition: left 0.3s;
     }
 
     .sidebar.open {
-        left: 0;
+        left: 10px;
     }
 
     .main-content {
